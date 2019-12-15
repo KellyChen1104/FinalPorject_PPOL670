@@ -1,0 +1,81 @@
+---
+title: "Project"
+output: powerpoint_presentation
+date: "02/12/2019"
+---
+
+
+```{r  , include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Problem statement 
+
+
+- Affordability of student loans is a rising topic in the United States in recent years. Many argue that it has jeopardized many families’ financial situation. 
+
+## Problem statement
+
+-Skyrocketing student debts doesn’t seem to stop families apply for student loan. With more families put great emphasis on education, and supportive policy, many families are willing to take a risk. In fact, a survey showed that 90% of private student loans now have an adult co-signer.
+
+## Problem statement
+
+-However,Do families have an clear idea about their financial situation to take a student loan?
+        Do they really know how the educational loan is going to affect their finance ? 
+
+## Goal of the analysis 
+
+- Determine which characteristics of a family have correlations with education loan amount if they decide to apply for a loan. 
+ 
+- Determine how amount of education loan can exacerbate financial struggle of a family.
+
+
+
+## Source of  Data
+
+- The Survey of Consumer Finances(SFC) is a dataset which contains all the data needed for the analysis and is provided by The Federal Reserve, the central bank of the US for the purpose of helping the government and ultimately the public to understand the financial condition of families in the US and to study the effects of changes in the economy. 
+
+## Source of the Data
+
+- The Survey comes with a code book to interpret the data.
+
+- The Data set has 31240 observations and 5321 variables.
+
+## Challenges
+
+- Finding the desired informaton among 5000+ variables
+- Translation of the values in the dataset
+- Finding an appropriate model for the data
+- Dealing with factors and 0'values
+
+
+## Predicting student loan 
+  ![Variables](C:\Users\realg\Desktop\Presentation_screenshots\variables1.png) 
+
+ ![Loan amount-frequency distribution](C:\Users\realg\Desktop\Presentation_screenshots\visual1.png) 
+
+## Model comparison
+
+![ ](C:\Users\realg\Desktop\Presentation_screenshots\model_comp_1.png) 
+
+## Mean Squared Error
+ 
+![ ](C:\Users\realg\Desktop\Presentation_screenshots\mse.png) 
+
+## Impact of financial struggle indicators on student loan
+
+  ![Variables](C:\Users\realg\Desktop\Presentation_screenshots\variables2.png) 
+
+
+## Model comparison
+
+![ ](C:\Users\realg\Desktop\Presentation_screenshots\model_comp_2.png) 
+
+
+\nwepage
+
+## Importance 
+
+![ ](C:\Users\realg\Desktop\Presentation_screenshots\importance.png) 
+
+

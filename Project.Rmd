@@ -53,9 +53,10 @@ The data for this project comes from The Survey of Consumer Finances in 2016 ( w
 
 When it comes to data wrangling, most of the work focused on interpreting the codebook. According to the codebook, I selected the above variables, rename all the columns as their original meanings. For categorical values, I also renamed them based on their meanings.  Some answers in the survey are not applicable or answered with “don’t know/not sure”, and they were given the value of 0 in the dataset. These values are treated as missing value for the analysis and are turned into N/A during the data wrangling stage.
  
-# Analysis
+# Analysis and results
 
 The first step for analysis is to find the relationship between the dependent variable (student loan amount) and independent variables.  For categorical variables such as race, marital status, Highest received education, which cannot be assigned to a certain level of loan amount relevance, I graphed their relationships to give a clear illustration of the difference of student loan amount between different groups.
+
 
 
 ```{r, echo=FALSE}
@@ -212,10 +213,7 @@ loan_frequency <- p16i6_el_translated %>%
  
 ```
 
-
-
 ```{r,out.width = '60%',message=FALSE}
-  
 race_plot
 loan_frequency
 ```
@@ -224,7 +222,7 @@ loan_frequency
 pie
 ```
  
-The second step is to prepare the dataset for machine learning, which means I partition the dataset into the training set and the testing set. The training set is 75% of the data, which I use to investigate and train models. The testing set has 25% of the data, which I use to test out the accuracy of the model prediction. In order to find the best fitting model, I first preprocess the training data. The purpose of data preprocessing is to scale and transform the continuous variables, so the data can fall within the same numerical range; to impute the missing data for better-estimated results; to turn categorical variables into dummy variables to fit into the model in the next step. With the help of Cran package, a framework for creating and preprocess design matrices, I transform the variables to have a mean of 0 and variance of 1; impute the missing data and transformed categorical data. These changes are also applied to both training data and testing data in order to calculate out of sample predictions. After preprocessing, we can see the distribution and variation of each variable as follows:   
+The second step is to prepare the dataset for machine learning, which means I partition the dataset into the training set and the testing set. The training set is 75% of the data, which I use to investigate and train models. The testing set has 25% of the data, which I use to test out the accuracy of the model prediction. In order to find the best fitting model, I first preprocess the training data. With the help of Cran package, a framework for creating and preprocess design matrices, I transform the variables to have a mean of 0 and variance of 1; impute the missing data and transformed categorical data into dummy variables. These changes are also applied to both training data and testing data in order to calculate out of sample predictions. After preprocessing, we can see the distribution and variation of each variable as follows:    
 
 
 ```{r, echo=FALSE,message=FALSE,warning=FALSE}
@@ -330,7 +328,7 @@ training2_plot
 ```
 
  
-The third step is to establish the correlation between the dependent variable and independent variables. Here I plotted a correlation graph, from which we can see that the student loan amount and all the variables are correlated except for Trust Fund. Since there is no correlation between the Trust Fund and student loan amount, I dropped this variable.  
+The third step is to establish the correlation between the dependent variable and independent variables. Here I plotted a correlation graph, from which we can see that the student loan amount and all the variables are correlated except for Trust Fund. Since there is no correlation between the Trust Fund and student loan amount, I dropped this variable.   
 
 ```{r, out.width= '70%',message=FALSE,warning=FALSE}
 corplot
@@ -411,11 +409,7 @@ mod_lm_1 <-
         trControl = control_conditions # Cross validation conditions
   )
 ```
-
- 
-
-Since we are predicting a continuous/interval-based outcome ——  student loan amount, I decided to run 4 different regression models random forest, classification and regression trees, linear regression and K nearest neighbors, to test out, which model performs the best and can potentially be used to predict student loan amount using independent variables.  After generating the models from training data, I calculated the R-square value in testing data using the models. From the result, we can tell that the Random Forest performs the best with the highest R-square value close to 0.25. R-square measures the goodness of fit of the model, the higher the R-square value is, the better the model fits.  
-
+I decided to run 4 different regression models random forest, classification and regression trees, linear regression and K nearest neighbors, to test out, which model performs the best and can potentially be used to predict student loan amount using independent variables.  After generating the models from training data, I calculated the R-square value in testing data using the models. From the result, we can tell that the Random Forest performs the best with the highest R-square value close to 0.25. R-square measures the goodness of fit of the model, the higher the R-square value is, the better the model fits.  
 ```{r, echo = FALSE,message=FALSE,warning=FALSE}
 
 mod_list1 <-
@@ -523,11 +517,6 @@ hardship_summary <- training_hardship_loan2 %>%
 
 ```
 
-
-
-```{r,message=FALSE,warning=FALSE,out.width='60%'}
-hardship_summary
-```
 
  
 
